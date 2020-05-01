@@ -1,8 +1,8 @@
-void delay_for(int clocks)
+void delay_for(unsigned int clocks)
 {
-	while(clocks > 0)
+	while(clocks--)
 	{
-		clocks--;
+		asm("nop");
 	}
 }
 
@@ -12,6 +12,6 @@ void main()
 	while(1)
 	{
 		// led GPIO toggle
-		delay_for(1000000);
+		delay_for(65535);
 	}
 }
