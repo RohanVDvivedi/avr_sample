@@ -3,7 +3,7 @@ LD:=avr-ld
 OC:=avr-objcopy
 
 #compiler flags
-CCFLAGS:=-Os
+CCFLAGS:=-mmcu=attiny85 -Os
 
 #linker flags
 LDFLAGS:=-L. -T linker_script.ld

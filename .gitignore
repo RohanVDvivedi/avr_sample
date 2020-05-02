@@ -51,4 +51,7 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# upload binaries
+*.bin
+
 *.temp
