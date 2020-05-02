@@ -10,7 +10,7 @@ LDFLAGS:=-L. -T linker_script.ld
 
 # generate objects from c sources
 %.o : %.c
-	${CC} $(CCFLAGS) $< -o $@
+	${CC} $(CCFLAGS) $< -o $@ -I.
 
 # generate objects from asm sources
 %.o : %.S
@@ -25,6 +25,9 @@ main.bin : main.elf
 	${OC} -O binary main.elf main.bin
 
 all : main.bin
+
+clean : 
+	rm -rf *.o *.elf *.bin
 
 # upload command to upload the code to the microcontroller
 upload :
