@@ -22,7 +22,7 @@ main.elf : startup.o main.o
 
 # convert to hex or binary that can be transfered by the corresponding uploader driver
 main.bin : main.elf
-	${OC} -O binary main.elf main.bin
+	${OC} -O ihex main.elf main.bin
 
 all : main.bin
 

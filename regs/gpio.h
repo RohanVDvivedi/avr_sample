@@ -11,6 +11,6 @@ struct GPIO_t
 	uint8_t PORT;
 };
 
-#define GPIOB ((volatile GPIO_t*)(0x0016))
+#define GPIOB ((volatile GPIO_t*)(0x0036))
 
 #endif

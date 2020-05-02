@@ -19,7 +19,7 @@ void main()
 		GPIOB->PORT ^= 1<<4;
 
 		// delay
-		//delay_for(65535);
+		delay_for(10000);
 	}
 }
 
