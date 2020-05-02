@@ -31,3 +31,12 @@ clean :
 
 # upload command to upload the code to the microcontroller
 upload :
+
+read_generics :
+	avrdude -v -c usbasp -p t85 -U signature:r:signature.temp:h -U lfuse:r:lfuse.temp:h -U hfuse:r:hfuse.temp:h -U efuse:r:efuse.temp:h -U lock:r:lockbits.temp:h
+
+read_eeprom :
+	avrdude -v -c usbasp -p t85 -U eeprom:r:eeprom_contents.temp:r
+
+read_flash :
+	avrdude -v -c usbasp -p t85 -U flash:r:flash_contents.temp:h
