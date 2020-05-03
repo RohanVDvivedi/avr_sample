@@ -27,7 +27,7 @@ main.bin : main.elf
 all : main.bin
 
 clean : 
-	rm -rf *.o *.elf *.bin
+	rm -rf *.o *.elf *.bin *.temp
 
 # upload command to upload the code to the microcontroller
 upload :
