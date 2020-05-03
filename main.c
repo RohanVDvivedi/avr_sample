@@ -61,7 +61,7 @@ void reset()
 	}
 
 	// load stack pointer
-	*((uint16_t *)0x3e) = 0x25f;
+	*((uint16_t *)0x5d) = 0x25f;
 
 	// call main
 	main();
