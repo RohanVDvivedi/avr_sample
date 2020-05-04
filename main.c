@@ -1,8 +1,8 @@
 #include<regs/gpio.h>
 
-uint16_t blink_count;
+uint8_t blink_count;
 
-uint16_t delay_cycles = 10000;
+uint8_t delay_cycles = 100;
 
 void delay_for(unsigned int clocks)
 {
@@ -24,45 +24,16 @@ void main()
 
 		// increment blink count to know, the number of timer we blinked
 		blink_count++;
+		blink_count = (blink_count > 655) ? 0 : blink_count;
+
+		volatile uint16_t multiplied = 0;
+		volatile int i;
+		for(i = 0; i < blink_count; i++)
+		{
+			multiplied += delay_cycles;
+		}
 
 		// delay
-		delay_for(delay_cycles);
+		delay_for(multiplied);
 	}
-}
-
-extern uint8_t __data_section_starts_lma;
-extern uint8_t __data_section_ends_lma;
-
-extern uint8_t __bss_section_starts_lma;
-extern uint8_t __bss_section_ends_lma;
-
-void reset()
-{
-	uint8_t* temp;
-
-	// initialize data section
-	uint8_t* data_start = &__data_section_starts_lma;
-	uint8_t* data_end = &__data_section_ends_lma;
-	temp = data_start;
-	while(temp < data_end)
-	{
-		*temp = 0xff;
-		temp++;
-	}
-
-	// zero bss section
-	uint8_t* bss_start = &__bss_section_starts_lma;
-	uint8_t* bss_end = &__bss_section_ends_lma;
-	temp = bss_start;
-	while(temp < bss_end)
-	{
-		*temp = 0;
-		temp++;
-	}
-
-	// load stack pointer
-	*((uint16_t *)0x5d) = 0x25f;
-
-	// call main
-	main();
 }
