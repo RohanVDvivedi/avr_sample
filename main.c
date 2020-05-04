@@ -1,8 +1,8 @@
 #include<regs/gpio.h>
 
-uint8_t blink_count;
+uint16_t blink_count;
 
-uint8_t delay_cycles = 100;
+uint16_t delay_cycles = 100;
 
 void delay_for(unsigned int clocks)
 {
@@ -27,7 +27,7 @@ void main()
 		blink_count = (blink_count > 655) ? 0 : blink_count;
 
 		volatile uint16_t multiplied = 0;
-		volatile int i;
+		volatile uint16_t i;
 		for(i = 0; i < blink_count; i++)
 		{
 			multiplied += delay_cycles;

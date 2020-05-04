@@ -17,7 +17,7 @@
 			cpi	r28, lo8(__data_section_ends_vma)
 			cpc	r29, r25
 
-			brcc zero_bss
+			breq zero_bss
 
 			lpm r0, Z
 			st	Y, r0
@@ -39,7 +39,7 @@
 			cpi	r28, lo8(__bss_section_ends_vma)
 			cpc	r29, r25
 
-			brcc setup_stack_pointer
+			breq setup_stack_pointer
 
 			st	Y, r24
 
