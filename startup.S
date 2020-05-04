@@ -45,7 +45,7 @@
 
 			adiw r28,1
 
-			rjmp zero_bss
+			rjmp zero_bss_loop
 
 		setup_stack_pointer:
 			; setup stack pointer
