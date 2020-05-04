@@ -25,6 +25,7 @@ SECTIONS
 	{
 		__bss_section_starts_vma = .;
 		*(.bss*)
+		*(COMMON)
 		__bss_section_ends_vma = .;
 	} > SRAM
 	/*.stack :
